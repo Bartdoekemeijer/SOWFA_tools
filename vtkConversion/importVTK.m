@@ -22,19 +22,8 @@ function [dataType,cellCenters,cellData] = importVTK(file)
 % 
 % EXAMPLE (make sure to add Utilities to path)
 % [dataType,cellCenters,cellData] = importVTK('Umean_slice_1.vtk');
-% UmeanAbsScattered = sqrt(sum(cellData.^2,2)); % get the absolute mean velocity
-% interpolant = scatteredInterpolant(cellCenters(:,1:2),UmeanAbsScattered); % create 2D interpolant
-% % or interpolant = TriScatteredInterp(cellCenters(:,1:2),UmeanAbsScattered);
-% % create uniform grid at hub-height
-% Z = cellCenters(1,3); % hub-height
-% Xaxis = linspace(min(cellCenters(:,1),[],1),max(cellCenters(:,1),[],1),300);
-% Yaxis = linspace(min(cellCenters(:,2),[],1),max(cellCenters(:,2),[],1),300);
-% [Xm,Ym] = meshgrid(Xaxis,Yaxis);
-% UmeanAbs = interpolant(Xm,Ym); % interpolate on grid
-% imagesc(Xaxis,Yaxis,UmeanAbs); % plot it
-% set(gca,'YDir','normal'); axis equal;
-% colormap(diverging_map(linspace(0,1,100),[0.230,0.299,0.754],[0.706,0.016,
-% 0.150])); % get the paraview colormap
+%
+% To plot a .vtk file, use plotVTK.m
 
     file = fopen(file,'r');
     while (~feof(file))
